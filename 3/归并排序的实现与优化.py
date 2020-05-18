@@ -5,7 +5,7 @@ from repo import insertionSort
 
 def mergeSort(alist):
     if len(alist)>1:
-        if len(alist)<=16: #优化2
+        if len(alist)<=16: #优化1
             alist=insertionSort(alist)
             return alist
         mid=len(alist)//2
@@ -13,10 +13,10 @@ def mergeSort(alist):
         righthalf=alist[mid:]
         lefthalf=mergeSort(lefthalf)
         righthalf=mergeSort(righthalf)
-        if lefthalf[-1] <= righthalf[0]:  #优化1。
+        if lefthalf[-1] <= righthalf[0]:  #优化2
             alist=lefthalf+righthalf
             return alist
-        i,j,k=0,0,0
+        i,j,k=0,0,0#i,j,k分别表示着左右半边的起始索引以及新元素的起始索引
         while i<len(lefthalf) and j<len(righthalf):
             if lefthalf[i]<=righthalf[j]:
                 alist[k]=lefthalf[i]
@@ -25,7 +25,7 @@ def mergeSort(alist):
                 alist[k]=righthalf[j]
                 j+=1
             k+=1
-        while i<len(lefthalf):
+        while i<len(lefthalf):#需要重点理解的两种情况。。。
             alist[k]=lefthalf[i]
             k+=1
             i+=1
@@ -65,7 +65,7 @@ def mergeSortBU(alist):
             i=i+size+size
         size=size+size
     return alist
-
+    
 
 max=100000
 list=[randint(-max,max) for x in range(max)]
