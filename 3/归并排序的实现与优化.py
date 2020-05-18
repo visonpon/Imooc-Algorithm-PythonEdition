@@ -25,11 +25,11 @@ def mergeSort(alist):
                 alist[k]=righthalf[j]
                 j+=1
             k+=1
-        while i<len(lefthalf):#需要重点理解的两种情况。。。
+        while i<len(lefthalf):#需要重点理解的两种情况。。。此时右边元素已经处理完毕，只剩左边
             alist[k]=lefthalf[i]
             k+=1
             i+=1
-        while j<len(righthalf):
+        while j<len(righthalf):#此时左边元素已经处理完毕，只剩右边元素。
             alist[k]=righthalf[j]
             k+=1
             j+=1
