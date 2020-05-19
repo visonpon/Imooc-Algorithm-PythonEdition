@@ -9,7 +9,7 @@ def mergeSortForInversion(alist):
         mid=len(alist)//2
         lefthalf=alist[:mid]
         righthalf=alist[mid:]
-        LeftIN=mergeSortForInversion(lefthalf)
+        LeftIN=mergeSortForInversion(lefthalf)#线写出递归框架，主体实现在后边，注意逻辑顺序
         RightIN=mergeSortForInversion(righthalf)
         IN=LeftIN+RightIN
         i,j,k=0,0,0
