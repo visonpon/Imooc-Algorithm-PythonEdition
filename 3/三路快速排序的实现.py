@@ -16,11 +16,11 @@ def quickSort3WaysHelper(alist,first,last):
             quickSort3WaysHelper(alist,first,ltEnd)
             quickSort3WaysHelper(alist,gtStart,last)
 
-def partition3Ways(alist,first,last):
+def partition3Ways(alist,first,last):#三路快排，顾名思义就是将元素分成三份，分别是小于，等于和大于
     rand=randint(first,last)
     alist[first], alist[rand] = alist[rand], alist[first]
     pivolvalue=alist[first]
-    lt,i,gt=first,first+1,last+1
+    lt,i,gt=first,first+1,last+1#依然要注意起始索引的初始化！！！
     done=False
     while not done:
         if alist[i]<pivolvalue:
