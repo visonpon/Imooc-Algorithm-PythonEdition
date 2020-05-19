@@ -20,7 +20,22 @@ class MaxHeap(object):
             else:
                 break
         self.heapList[i]=currentvalue
-
+    ###TODO ---
+    def shiftUp2(self,k):
+        while k//2>0:
+            if self.heapList[k//2]<self.heapList[k]:
+                swap(self.heapList[k//2],self.heapList[k])
+                k = k//2
+    def shiftDown(self,k):
+        while(2*k<self.currentsize):
+            j=2*i+1
+            if(2*i+1<self.currentsize and self.heapList[j]>self.heapList[k]):
+                j +=1
+            if self.heapList[k]>self.heapList[j]:
+                break
+            swap(self.heapList[k],self.heapList[j])
+            k=j
+            
     def insert(self,k):
         self.heapList.append(k)
         self.currentSize+=1
