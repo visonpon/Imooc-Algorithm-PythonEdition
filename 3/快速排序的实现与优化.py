@@ -10,12 +10,12 @@ def quickSort(alist):
     quickSortHelper(alist,0,len(alist)-1)
     return alist
 
-def quickSortHelper(alist,first,last):
+def quickSortHelper(alist,first,last):#主体框架 --- 递归
     if first<last:
         if last - first <= 16:  #优化：当列表足够小的时候使用插入排序
             insertionSortForQS(alist, first, last)
         else:
-            splitpoint=partition(alist,first,last)
+            splitpoint=partition(alist,first,last)#主要实现---寻找分割点
             quickSortHelper(alist,first,splitpoint-1)
             quickSortHelper(alist,splitpoint+1,last)
 
@@ -34,7 +34,7 @@ def partition(alist,first,last):
         if leftmark>rightmark:
             done=True
         else:
-            alist[leftmark],alist[rightmark]=alist[rightmark],alist[leftmark]
+            alist[leftmark],alist[rightmark]=alist[rightmark],alist[leftmark]#解决重复元素很多，避免性能退化的问题。
             leftmark+=1
             rightmark-=1
     alist[first],alist[rightmark]=alist[rightmark],alist[first]
@@ -42,7 +42,7 @@ def partition(alist,first,last):
 
 def insertionSortForQS(alist,first,last):
     #专门为辅助快速排序设计的插入排序
-    for i in range(first+1,last+1):
+    for i in range(first+1,last+1):#注意起始索引
         currentvalue=alist[i]
         position=i
         while position>first and alist[position-1]>currentvalue:
@@ -51,6 +51,8 @@ def insertionSortForQS(alist,first,last):
         alist[position]=currentvalue
     return alist
 
+
+    
 max=100000
 list=[randint(-max,max) for x in range(max)]
 alist=list[:]
