@@ -28,8 +28,8 @@ class MaxHeap(object):
                 k = k//2
     def shiftDown(self,k):
         while(2*k<self.currentsize):
-            j=2*i+1
-            if(2*i+1<self.currentsize and self.heapList[j]>self.heapList[k]):
+            j=2*k
+            if(2*k+1<self.currentsize and self.heapList[j+1]>self.heapList[j]):
                 j +=1
             if self.heapList[k]>self.heapList[j]:
                 break
